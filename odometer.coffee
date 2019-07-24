@@ -284,7 +284,7 @@ class Odometer
           @addSpacer valueDigit
     else
       wholePart = not @format.precision or not fractionalPart(value) or false
-      for digit in value.toString().split('').reverse()
+      for digit in value.toFixed(@format.precision).toString().split('').reverse()
         if digit is '.'
           wholePart = true
 
