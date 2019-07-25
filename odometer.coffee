@@ -240,7 +240,8 @@ class Odometer
     classes = @el.className.split(' ')
     newClasses = []
     for cls in classes when cls.length
-      if match = /^odometer-theme-(.+)$/.exec(cls)
+      match = /^odometer-theme-(.+)$/.exec(cls)
+      if match
         theme = match[1]
         continue
 
@@ -283,6 +284,8 @@ class Odometer
         else
           @addSpacer valueDigit
     else
+      if @format.precision > 0
+        value = value + 1 / Math.pow(10, @format.precision + 1)
       wholePart = not @format.precision or not fractionalPart(value) or false
       for digit in value.toFixed(@format.precision).toString().split('').reverse()
         if digit is '.'
