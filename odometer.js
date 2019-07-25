@@ -293,7 +293,8 @@
         if (!cls.length) {
           continue;
         }
-        if (match = /^odometer-theme-(.+)$/.exec(cls)) {
+        match = /^odometer-theme-(.+)$/.exec(cls);
+        if (match) {
           theme = match[1];
           continue;
         }
@@ -335,6 +336,9 @@
           }
         }
       } else {
+        if (this.format.precision > 0) {
+          value = value + 1 / Math.pow(10, this.format.precision + 1);
+        }
         wholePart = !this.format.precision || !fractionalPart(value) || false;
         _ref1 = value.toFixed(this.format.precision).toString().split('').reverse();
         for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
