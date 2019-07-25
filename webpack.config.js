@@ -12,7 +12,6 @@ const getEntries = () => {
 }
 
 module.exports = (env) => {
-    console.log(env);
     const devMode = env && !!env.DEV;
     return {
         entry: getEntries(),
