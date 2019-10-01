@@ -279,6 +279,8 @@ class Odometer
         if valueDigit.match(/0-9/)
           digit = @renderDigit()
           digit.querySelector('.odometer-value').innerHTML = valueDigit
+          addClass digit.querySelector('.odometer-value'), 'odometer-value-' + valueDigit
+
           @digits.push digit
           @insertDigit digit
         else
@@ -362,6 +364,7 @@ class Odometer
 
     digit = @renderDigit()
     digit.querySelector('.odometer-value').innerHTML = value
+    addClass digit.querySelector('.odometer-value'), 'odometer-value-' + value
     @digits.push digit
 
     @insertDigit digit
@@ -498,6 +501,8 @@ class Odometer
         numEl = document.createElement('div')
         numEl.className = 'odometer-value'
         numEl.innerHTML = frame
+
+        addClass numEl, 'odometer-value-' + frame
 
         @ribbons[i].appendChild numEl
 

@@ -8,7 +8,13 @@ const getEntries = () => {
         return file.match(/odometer.*\.sass$/);
     }).map((file)=> './sass/' + file);
     entries.push('./odometer.coffee');
-    return entries;    
+
+    // return [
+    //     './sass/odometer-theme-default.sass',
+    //     './odometer.coffee'
+    // ]
+
+    return entries;
 }
 
 module.exports = (env) => {
@@ -20,7 +26,7 @@ module.exports = (env) => {
         output: {
             path: __dirname,
             filename: 'odometer.bundle.js',
-            library: 'Odometer',
+            libraryTarget: "umd"
         },
         optimization: {
             minimizer: [
